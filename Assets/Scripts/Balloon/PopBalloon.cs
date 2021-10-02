@@ -72,7 +72,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
             if(Physics.Raycast(ray, out hitObject))
             {
                 GameObject DetectedObject = hitObject.transform.gameObject;
-                if(DetectedObject != null)
+
+                // If the game object exists and has the tag balloon, destroy it
+                if(DetectedObject != null && DetectedObject.tag == "balloon")
                 {
                     Destroy(DetectedObject);
                 }

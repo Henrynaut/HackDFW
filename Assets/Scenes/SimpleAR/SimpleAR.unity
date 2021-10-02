@@ -1005,6 +1005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlacedPrefab: {fileID: 4888821458719416565, guid: 61487aea3f729c74fb579323f2df25e6,
     type: 3}
+  AR_Camera: {fileID: 282840813}
 --- !u!1 &1488212447
 GameObject:
   m_ObjectHideFlags: 0
