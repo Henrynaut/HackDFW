@@ -81,8 +81,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 {
                     Destroy(DetectedObject);
 
-                    // Play Pop Sound, with the clip attached at 80% volume
-                    PopSound.PlayOneShot(PopSound.clip, 0.8f);
+                    // Play Pop Sound, with the clip attached at 100% volume
+                    PopSound.PlayOneShot(PopSound.clip, 1.0f);
                 }
             }
         }
