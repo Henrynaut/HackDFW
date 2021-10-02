@@ -44,4 +44,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+!Packages/com.amazonaws.gamelift-1.1.0.tgz
+
 .DS_Store

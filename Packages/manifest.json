@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.amazonaws.gamelift": "file:C:/Users/nmchenry1/Downloads/com.amazonaws.gamelift-1.1.0.tgz",
+    "com.amazonaws.gamelift": "file:../Packages/com.amazonaws.gamelift-1.1.0.tgz",
     "com.unity.ide.rider": "2.0.7",
     "com.unity.ide.visualstudio": "2.0.11",
     "com.unity.ide.vscode": "1.2.4",
