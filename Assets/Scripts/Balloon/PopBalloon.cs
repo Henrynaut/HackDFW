@@ -37,6 +37,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
         // Reference to the AR Camera
         public Camera AR_Camera;
 
+        // Reference to the Audio source
+        public AudioSource PopSound;
+
         void Awake()
         {
             m_RaycastManager = GetComponent<ARRaycastManager>();
@@ -77,6 +80,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 if(DetectedObject != null && DetectedObject.tag == "balloon")
                 {
                     Destroy(DetectedObject);
+
+                    // Play Pop Sound, with the clip attached at 80% volume
+                    PopSound.PlayOneShot(PopSound.clip, 0.8f);
                 }
             }
         }
