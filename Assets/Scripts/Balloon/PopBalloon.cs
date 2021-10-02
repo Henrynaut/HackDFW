@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -14,9 +14,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
     /// and moved to the hit position.
     /// </summary>
     [RequireComponent(typeof(ARRaycastManager))]
-    public class PlaceOnPlane : MonoBehaviour
+    public class PopBalloon : MonoBehaviour
     {
-        [SerializeField]
+       [SerializeField]
         [Tooltip("Instantiates this prefab on a plane at the touch location.")]
         GameObject m_PlacedPrefab;
 	List<GameObject> spawnedObjects = new List<GameObject>();
@@ -71,8 +71,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 {
                     spawnedObject.transform.position = hitPose.position;
                 }
-		*/
-		        spawnedObjects.Add(Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation));
+		*/      GameObject temp = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+		        //spawnedObjects.Add(temp);
+                Destroy(temp,3);
             }
         }
 
