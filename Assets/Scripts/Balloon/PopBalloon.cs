@@ -94,10 +94,11 @@ namespace UnityEngine.XR.ARFoundation.Samples
             float minDistance = 1.0f; // 1 meter
             float maxDistance = 3.0f; // 3 meters
             float distance    = Random.Range( minDistance, maxDistance );
-            float angle       = Random.Range( -Mathf.PI/2, Mathf.PI/2 );
+            float angle       = Random.Range( 0, Mathf.PI);
             
+            // Get AR camera position and create a balloon spawn position based on distance and angle
             Vector3 spawnPosition = AR_Camera.transform.position ;
-            spawnPosition += new Vector3( Mathf.Cos( angle ), Random.Range(0.0f,0.2f), Mathf.Sin( angle ) ) * distance;
+            spawnPosition += new Vector3( Mathf.Cos( angle ), Random.Range(0.0f,0.5f), Mathf.Sin( angle ) ) * distance;
 
             // Old way to spawn at random positions
             // var pos = new Vector3(Random.Range(-2.0f,2.0f), Random.Range(0.0f,0.5f), Random.Range(-2.0f,2.0f));
