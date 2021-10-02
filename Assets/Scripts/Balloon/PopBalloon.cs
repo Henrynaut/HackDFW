@@ -44,8 +44,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void Start()
         {
-            // Spawn balloons every 2 seconds, after a 1 second delay
-            InvokeRepeating("SpawnBalloon", 1, 2);
+            // Spawn balloons every 1 second, after a 0 second delay
+            InvokeRepeating("SpawnBalloon", 0, 1);
         }
 
         bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -83,7 +83,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void SpawnBalloon()
         {
-            var pos = new Vector3(Random.Range(-2,2), 0.5f, Random.Range(-2,2));
+            var pos = new Vector3(Random.Range(-2.0f,2.0f), Random.Range(0.0f,0.5f), Random.Range(-2.0f,2.0f));
             GameObject temp = Instantiate(m_PlacedPrefab, pos, Quaternion.Euler(0, 0, 0));
             spawnedObjects.Add(temp);            
         }
