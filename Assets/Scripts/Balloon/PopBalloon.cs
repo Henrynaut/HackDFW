@@ -34,6 +34,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
         /// </summary>
         public GameObject spawnedObject { get; private set; }
 
+        // Reference to the AR Camera
+        public Camera AR_Camera;
+
         void Awake()
         {
             m_RaycastManager = GetComponent<ARRaycastManager>();
@@ -59,14 +62,21 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void Update()
         {
-            // if (!TryGetTouchPosition(out Vector2 touchPosition))
-            //     return;
+            // If we touch a balloon, pop it
+            if (!TryGetTouchPosition(out Vector2 touchPosition))
+                return;
 
-            // // If we touch a balloon, pop it
-            // if (m_RaycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
-            // {
-            //     Destroy(s_Hits[0].transform.gameObject); // destroy the object hit
-            // }
+            Ray ray = AR_Camera.ScreenPointToRay(touchPosition);
+            RaycastHit hitObject;
+
+            if(Physics.Raycast(ray, out hitObject))
+            {
+                GameObject DetectedObject = hitObject.transform.gameObject;
+                if(DetectedObject != null)
+                {
+                    Destroy(DetectedObject);
+                }
+            }
         }
 
         void SpawnBalloon()
