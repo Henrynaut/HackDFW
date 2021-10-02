@@ -39,6 +39,12 @@ namespace UnityEngine.XR.ARFoundation.Samples
             m_RaycastManager = GetComponent<ARRaycastManager>();
         }
 
+        void Start()
+        {
+            // Spawn balloons every 2 seconds, after a 1 second delay
+            InvokeRepeating("SpawnBalloon", 1, 2);
+        }
+
         bool TryGetTouchPosition(out Vector2 touchPosition)
         {
             if (Input.touchCount > 0)
@@ -53,28 +59,21 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void Update()
         {
-            if (!TryGetTouchPosition(out Vector2 touchPosition))
-                return;
+            // if (!TryGetTouchPosition(out Vector2 touchPosition))
+            //     return;
 
-            if (m_RaycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
-            {
-                // Raycast hits are sorted by distance, so the first one
-                // will be the closest hit.
-                var hitPose = s_Hits[0].pose;
-		/*
-                if (spawnedObject == null)
-                {
-                    spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
-		    
-                }
-                else
-                {
-                    spawnedObject.transform.position = hitPose.position;
-                }
-		*/      GameObject temp = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
-		        //spawnedObjects.Add(temp);
-                Destroy(temp,3);
-            }
+            // // If we touch a balloon, pop it
+            // if (m_RaycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
+            // {
+            //     Destroy(s_Hits[0].transform.gameObject); // destroy the object hit
+            // }
+        }
+
+        void SpawnBalloon()
+        {
+            var pos = new Vector3(Random.Range(-2,2), 0.5f, Random.Range(-2,2));
+            GameObject temp = Instantiate(m_PlacedPrefab, pos, Quaternion.Euler(0, 0, 0));
+            spawnedObjects.Add(temp);            
         }
 
         static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
