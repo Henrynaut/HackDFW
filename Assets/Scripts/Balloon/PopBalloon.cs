@@ -19,7 +19,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
        [SerializeField]
         [Tooltip("Instantiates this prefab on a plane at the touch location.")]
         GameObject m_PlacedPrefab;
-	List<GameObject> spawnedObjects = new List<GameObject>();
+        public ProgressBar progressBar;
+	    List<GameObject> spawnedObjects = new List<GameObject>();
+        int score = 0;
         /// <summary>
         /// The prefab to instantiate on touch.
         /// </summary>
@@ -79,12 +81,18 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 // If the game object exists and has the tag balloon, destroy it
                 if(DetectedObject != null && DetectedObject.tag == "balloon")
                 {
+                    
                     Destroy(DetectedObject);
-
+                    progressBar.IncrementProgress(1);
                     // Play Pop Sound, with the clip attached at 100% volume
                     PopSound.PlayOneShot(PopSound.clip, 1.0f);
                 }
             }
+            if(score > 10)
+            {
+                //Stop the game
+            }
+
         }
 
         void SpawnBalloon() 

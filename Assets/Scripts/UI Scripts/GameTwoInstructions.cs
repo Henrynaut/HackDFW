@@ -5,6 +5,6 @@ public class GameTwoInstructions : MonoBehaviour
 {
     public void LoadGameTwoInstructions()
     {
-        SceneManager.LoadScene("Type 2 Game Instructions", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Type 2 Game Instructions");
     }
 }

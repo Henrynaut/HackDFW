@@ -5,6 +5,6 @@ public class GameOne : MonoBehaviour
 {
     public void LoadGameOne()
     {
-        SceneManager.LoadScene("SimpleAR", LoadSceneMode.Additive);
+        SceneManager.LoadScene("SimpleAR");
     }
 }

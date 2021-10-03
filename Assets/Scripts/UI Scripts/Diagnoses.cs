@@ -5,6 +5,6 @@ public class Diagnoses : MonoBehaviour
 {
     public void LoadDiagnosesScreen()
     {
-        SceneManager.LoadScene("Diagnoses Screen", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Diagnoses Screen");
     }
 }
