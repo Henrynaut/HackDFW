@@ -37,6 +37,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
         // Reference to the AR Camera
         public Camera AR_Camera;
 
+        // Reference to the Audio source
+        public AudioSource PopSound;
+
         void Awake()
         {
             m_RaycastManager = GetComponent<ARRaycastManager>();
@@ -44,8 +47,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void Start()
         {
-            // Spawn balloons every 2 seconds, after a 1 second delay
-            InvokeRepeating("SpawnBalloon", 1, 2);
+            // Spawn balloons every 1 second, after a 0 second delay
+            InvokeRepeating("SpawnBalloon", 0, 1);
         }
 
         bool TryGetTouchPosition(out Vector2 touchPosition)
@@ -77,14 +80,29 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 if(DetectedObject != null && DetectedObject.tag == "balloon")
                 {
                     Destroy(DetectedObject);
+
+                    // Play Pop Sound, with the clip attached at 100% volume
+                    PopSound.PlayOneShot(PopSound.clip, 1.0f);
                 }
             }
         }
 
-        void SpawnBalloon()
+        void SpawnBalloon() 
         {
-            var pos = new Vector3(Random.Range(-2,2), 0.5f, Random.Range(-2,2));
-            GameObject temp = Instantiate(m_PlacedPrefab, pos, Quaternion.Euler(0, 0, 0));
+
+            // Set up distance and angle to spawn balloons away from AR camera, in a 180 degree cone
+            float minDistance = 1.0f; // 1 meter
+            float maxDistance = 3.0f; // 3 meters
+            float distance    = Random.Range( minDistance, maxDistance );
+            float angle       = Random.Range( 0, Mathf.PI);
+            
+            // Get AR camera position and create a balloon spawn position based on distance and angle
+            Vector3 spawnPosition = AR_Camera.transform.position ;
+            spawnPosition += new Vector3( Mathf.Cos( angle ), Random.Range(0.0f,0.5f), Mathf.Sin( angle ) ) * distance;
+
+            // Old way to spawn at random positions
+            // var pos = new Vector3(Random.Range(-2.0f,2.0f), Random.Range(0.0f,0.5f), Random.Range(-2.0f,2.0f));
+            GameObject temp = Instantiate(m_PlacedPrefab, spawnPosition, Quaternion.Euler(0, 0, 0));
             spawnedObjects.Add(temp);            
         }
 
