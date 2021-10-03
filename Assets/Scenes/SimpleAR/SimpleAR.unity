@@ -1412,6 +1412,8 @@ MonoBehaviour:
   progressBar: {fileID: 0}
   AR_Camera: {fileID: 282840813}
   PopSound: {fileID: 605448268}
+  Balloon_Manager: {fileID: 1855104740}
+  BalloonToSpawnNext: {fileID: 0}
 --- !u!1 &1488212447
 GameObject:
   m_ObjectHideFlags: 0

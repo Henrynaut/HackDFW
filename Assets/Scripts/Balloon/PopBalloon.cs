@@ -42,6 +42,11 @@ namespace UnityEngine.XR.ARFoundation.Samples
         // Reference to the Audio source
         public AudioSource PopSound;
 
+        // Reference to the Balloon Mananger
+        public BalloonManager Balloon_Manager;
+        public GameObject BalloonToSpawnNext;
+        private int RandomIndex;
+
         void Awake()
         {
             m_RaycastManager = GetComponent<ARRaycastManager>();
@@ -93,6 +98,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void SpawnBalloon() 
         {
+            
+            //Pick a random balloon
+            m_PlacedPrefab = GetRandomBalloon();
 
             // Set up distance and angle to spawn balloons away from AR camera, in a 180 degree cone
             float minDistance = 1.0f; // 1 meter
@@ -106,8 +114,17 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             // Old way to spawn at random positions
             // var pos = new Vector3(Random.Range(-2.0f,2.0f), Random.Range(0.0f,0.5f), Random.Range(-2.0f,2.0f));
-            GameObject temp = Instantiate(m_PlacedPrefab, spawnPosition, Quaternion.Euler(0, 0, 0));
+            GameObject temp = Instantiate(m_PlacedPrefab, spawnPosition, Quaternion.Euler(0, 180, 0));
             spawnedObjects.Add(temp);            
+        }
+
+        GameObject GetRandomBalloon()
+        {
+            // From Balloon manager, automatically select a random balloon prefab
+            RandomIndex = Random.Range( 0, (Balloon_Manager.BalloonPrefabs.Length - 1));
+            BalloonToSpawnNext = Balloon_Manager.BalloonPrefabs[RandomIndex];
+
+            return BalloonToSpawnNext;
         }
 
         static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
