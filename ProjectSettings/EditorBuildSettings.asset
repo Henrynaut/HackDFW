@@ -131,6 +131,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Diagnoses Screen.unity
     guid: 299e9accebb174855bce77fa9bc112c8
+  - enabled: 1
+    path: Assets/Scenes/Type 1 Game Instructions.unity
+    guid: 1fe84712590b0414082353a5ea433736
+  - enabled: 1
+    path: Assets/Scenes/Type 2 Game Instructions.unity
+    guid: f1106e52fd4d4444c9f8594db2c2698c
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f8ce26fe3bc69499b9be4b2378e97a94,
       type: 2}
