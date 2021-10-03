@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class ProgressBar : MonoBehaviour
         if(slider.value >= 10)
         {
             //End Game
+            
+            SceneManager.LoadScene("Type 1 Game Instructions");
+            slider.value = 0;
         }
 
     }

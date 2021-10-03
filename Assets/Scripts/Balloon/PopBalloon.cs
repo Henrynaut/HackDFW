@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -21,7 +22,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
         GameObject m_PlacedPrefab;
         public ProgressBar progressBar;
 	    List<GameObject> spawnedObjects = new List<GameObject>();
-        int score = 0;
         /// <summary>
         /// The prefab to instantiate on touch.
         /// </summary>
@@ -87,10 +87,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
                     // Play Pop Sound, with the clip attached at 100% volume
                     PopSound.PlayOneShot(PopSound.clip, 1.0f);
                 }
-            }
-            if(score > 10)
-            {
-                //Stop the game
             }
 
         }
