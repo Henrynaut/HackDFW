@@ -1,3 +1,9 @@
 version: 1
+GameLiftLocalPath: C:/Users/neil/Downloads/GameLift_06_03_2021/GameLiftLocal-1.0.5/GameLiftLocal.jar
+GameLiftLocalPort: 8080
+CurrentProfileName: neil
+CurrentRegion: us-east-2
+CurrentBucketName: artiebucket
+DeploymentScenarioIndex: 1
 WasSettingsWindowShown: 1
 ...
