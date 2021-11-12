@@ -84,7 +84,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 GameObject DetectedObject = hitObject.transform.gameObject;
 
                 // If the game object exists and has the tag balloon, destroy it
-                if(DetectedObject != null && DetectedObject.tag == "balloon")
+                // if(DetectedObject != null && DetectedObject.tag == "balloon")
+                if(DetectedObject != null)
                 {
                     
                     Destroy(DetectedObject);
@@ -112,9 +113,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
             Vector3 spawnPosition = AR_Camera.transform.position ;
             spawnPosition += new Vector3( Mathf.Cos( angle ), Random.Range(0.0f,0.5f), Mathf.Sin( angle ) ) * distance;
 
-            // Old way to spawn at random positions
-            // var pos = new Vector3(Random.Range(-2.0f,2.0f), Random.Range(0.0f,0.5f), Random.Range(-2.0f,2.0f));
             GameObject temp = Instantiate(m_PlacedPrefab, spawnPosition, Quaternion.Euler(0, 180, 0));
+            temp.transform.LookAt(AR_Camera.transform);
             spawnedObjects.Add(temp);            
         }
 
